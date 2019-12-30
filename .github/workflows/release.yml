@@ -13,6 +13,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@master
 
+      - name: Get Release Version
+        id: version
+        run: |
+          VERSION=`hack/version.sh`
+          echo '::set-env name=version::$VERSION'
+
       - name: Build project
         run: |
           make build-in-docker
@@ -21,7 +27,8 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: |
-            build/portal-*.tag.gz
+            build/portal-${{ steps.version.outputs.version }}-linux-amd64.tag.gz
+            build/portal-${{ steps.version.outputs.version }}-darwin-amd64.tag.gz
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 #
