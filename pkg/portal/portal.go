@@ -1,27 +1,29 @@
 package portal
 
-type Portal struct {
+// Portal is a common interface for all destinations to implement
+type Portal interface {
+	// Name of the portal
+	Name() string
+	// Connect to this portal
+	Connect() error
 
-	Name string
-	Type string
-
-	Tunnel *TunnelConfig
-	Remote *RemoteConfig
+	Hint() string
+	SetHint(string)
 }
 
-type TunnelConfig struct {
-	Local *int
-	Remote *RemoteConfig
+type portalShared struct {
+	name string
+	hint string
 }
 
-type RemoteConfig struct {
-	Host string
-	Port *int
-
-	Credentials *RemoteCredentials
+func (p *portalShared) Name() string {
+	return p.name
 }
 
-type RemoteCredentials struct {
-	Key *string
-	Username *string
+func (p *portalShared) SetHint(h string) {
+	p.hint = h
+}
+
+func (p *portalShared) Hint() string {
+	return p.hint
 }

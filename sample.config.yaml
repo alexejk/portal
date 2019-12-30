@@ -1,0 +1,25 @@
+---
+debug: false
+
+# List of all known destinations
+portals:
+
+  # Tunnel
+  - name: server1.tunnel
+    hint: Port 3000
+    command: ssh -L 3000:localhost:8080 me@server1.dot.ip
+
+  # Direct connection
+  - name: server1
+    hint: Some hint message here
+    command: ssh me@server1.dot.ip
+
+  - name: server.prod.bastion
+    command: ssh -A user@bastion.dot.ip
+#    aws:
+#      instance-id: i-1234abc
+#      region: us-west-2
+
+  - name: server.prod.tunnel
+    hint: Local 33333 -> 12345 @ backend.dot.ip via bastion.dot.ip
+    command: ssh -L 33333:localhost:33333 -A user@bastion.dot.ip ssh -L 33333:localhost:12345 -A user@backend.dot.ip
