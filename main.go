@@ -6,24 +6,24 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
-// AppVersion denotes version number of this application
-var AppVersion = "x.y.z"
+// appVersion denotes version number of this application
+var appVersion = "x.y.z"
 
 // AppName denotes name of this application
-var AppName = "portal"
+var appName = "portal"
 
 // AppCommit denotes git commit that this binary was built from
-var AppCommit = "~unknown~"
+var appCommit = "~unknown~"
 
 // AppCommitDate denotes the date of the commit
-var AppCommitDate = "~unknown~"
+var appCommitDate = "~unknown~"
 
 // AppCommitTime denotes the time of the commit
-var AppCommitTime = "~unknown~"
+var appCommitTime = "~unknown~"
 
 func main() {
 
-	v := version.NewVersionInfo(AppName, AppVersion, AppCommit, AppCommitDate, AppCommitTime)
+	v := version.NewVersionInfo(appName, appVersion, appCommit, appCommitDate, appCommitTime)
 
 	if err := cmd.RootCmd(v).Execute(); err != nil {
 		logrus.Fatal(err)

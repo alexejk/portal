@@ -1,15 +1,14 @@
 # We don't need make's built-in rules.
 MAKEFLAGS += --no-builtin-rules
 
-include build.properties
-
 APP_NAME="portal"
-APP_BUILD=`git log -1 --format=%h`
-APP_BUILD_DATE:=`TZ=UTC git log -1 --format=%cd --date=format:"%Y-%m-%d"`
-APP_BUILD_TIME:=`TZ=UTC git log -1 --format=%cd --date=format:"%H:%M:%S"`
+APP_COMMIT=`git log -1 --format=%h`
+APP_VERSION=`hack/version.sh`
+APP_COMMIT_DATE:=`TZ=UTC git log -1 --format=%cd --date=format:"%Y-%m-%d"`
+APP_COMMIT_TIME:=`TZ=UTC git log -1 --format=%cd --date=format:"%H:%M:%S"`
 
 GO_FLAGS= CGO_ENABLED=0
-GO_LDFLAGS= -ldflags="-X main.AppName=$(APP_NAME) -X main.AppVersion=$(VERSION) -X main.AppCommit=$(APP_BUILD) -X main.AppCommitDate=$(APP_BUILD_DATE) -X main.AppCommitTime=$(APP_BUILD_TIME)"
+GO_LDFLAGS= -ldflags="-X main.appName=$(APP_NAME) -X main.appVersion=$(APP_VERSION) -X main.appCommit=$(APP_COMMIT) -X main.appCommitDate=$(APP_COMMIT_DATE) -X main.appCommitTime=$(APP_COMMIT_TIME)"
 GO_BUILD_CMD=$(GO_FLAGS) go build $(GO_LDFLAGS)
 
 BINARY_NAME=$(APP_NAME)
