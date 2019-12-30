@@ -1,7 +1,7 @@
 # We don't need make's built-in rules.
 MAKEFLAGS += --no-builtin-rules
 
-APP_NAME="portal"
+APP_NAME=portal
 APP_COMMIT=`git log -1 --format=%h`
 APP_VERSION=`hack/version.sh`
 APP_COMMIT_DATE:=`TZ=UTC git log -1 --format=%cd --date=format:"%Y-%m-%d"`
