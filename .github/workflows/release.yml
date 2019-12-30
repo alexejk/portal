@@ -13,12 +13,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@master
 
-      - name: Get Release Version
-        id: version
-        run: |
-          VERSION=`hack/version.sh`
-          echo '::set-env name=version::$VERSION'
-
       - name: Build project
         run: |
           make build-in-docker
@@ -26,41 +20,6 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          files: |
-            build/portal-${{ steps.version.outputs.version }}-linux-amd64.tag.gz
-            build/portal-${{ steps.version.outputs.version }}-darwin-amd64.tag.gz
+          files: build/portal-*.tar.gz
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#
-#      - name: Create Release
-#        id: create_release
-#        uses: actions/create-release@v1.0.0
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#        with:
-#          tag_name: ${{ github.ref }}
-#          release_name: Release ${{ github.ref }}
-#          draft: false
-#          prerelease: false
-#
-#      - name: Upload Release Asset - Linux amd64
-#        id: upload-release-asset
-#        uses: actions/upload-release-asset@v1.0.1
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#        with:
-#          upload_url: ${{ steps.create_release.outputs.upload_url }}
-#          asset_path: ./build/portal-darwin-amd64.tag.gz
-#          asset_name: portal-darwin-amd64.tag.gz
-#          asset_content_type: application/gzip
-#
-#      - name: Upload Release Asset - Darwin amd64
-#        id: upload-release-asset
-#        uses: actions/upload-release-asset@v1.0.1
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#        with:
-#          upload_url: ${{ steps.create_release.outputs.upload_url }}
-#          asset_path: ./build/portal-darwin-amd64.tag.gz
-#          asset_name: portal-darwin-amd64.tag.gz
-#          asset_content_type: application/gzip
