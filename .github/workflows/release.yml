@@ -17,9 +17,15 @@ jobs:
         run: |
           make build-in-docker
 
-      - name: Release
+      - name: Generate Changelog
+        run: |
+          VERSION=$(hack/version.sh)
+          hack/changelog.sh $VERSION > build/${{ github.workflow }}-CHANGELOG.md
+
+      - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
         with:
+          body_path: build/${{ github.workflow }}-CHANGELOG.md
           files: build/portal-*.tar.gz
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
