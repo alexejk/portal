@@ -1,4 +1,4 @@
-module github.com/alexejk/portal
+module alexejk.io/portal
 
 go 1.13
 

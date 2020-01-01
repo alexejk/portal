@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/alexejk/portal/cmd"
-	"github.com/alexejk/portal/pkg/version"
+	"alexejk.io/portal/cmd"
+	"alexejk.io/portal/pkg/version"
 	"github.com/sirupsen/logrus"
 )
 

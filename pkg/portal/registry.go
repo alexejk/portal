@@ -3,7 +3,7 @@ package portal
 import (
 	"fmt"
 
-	"github.com/alexejk/portal/pkg/config"
+	"alexejk.io/portal/pkg/config"
 )
 
 type Registry struct {

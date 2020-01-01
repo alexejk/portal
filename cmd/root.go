@@ -1,8 +1,8 @@
 package cmd
 
 import (
-	"github.com/alexejk/portal/pkg/config"
-	"github.com/alexejk/portal/pkg/version"
+	"alexejk.io/portal/pkg/config"
+	"alexejk.io/portal/pkg/version"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 )

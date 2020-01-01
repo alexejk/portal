@@ -5,7 +5,7 @@ cli:
   project: alexejk/portal
 analyze:
   modules:
-  - name: github.com/alexejk/portal
+  - name: alexejk.io/portal
     type: go
-    target: github.com/alexejk/portal
+    target: alexejk.io/portal
     path: .

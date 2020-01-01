@@ -4,7 +4,7 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/alexejk/portal/pkg/portal"
+	"alexejk.io/portal/pkg/portal"
 	"github.com/spf13/cobra"
 )
 
