@@ -6,7 +6,7 @@ VERSION=$(echo "$1" | sed 's/^v//g')
 IFS=''
 found=0
 
-cat  CHANGELOG.md | while read "line"; do
+cat CHANGELOG.md | while read "line"; do
 
     # If not found and matching heading
     if [ $found -eq 0 ] && echo "$line" | grep -q "^$MARKER_PREFIX $VERSION$"; then
@@ -24,5 +24,4 @@ cat  CHANGELOG.md | while read "line"; do
     if [ $found -eq 1 ]; then
         echo "$line"
     fi
-
 done

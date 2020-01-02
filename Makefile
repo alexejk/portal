@@ -2,10 +2,10 @@
 MAKEFLAGS += --no-builtin-rules
 
 APP_NAME=portal
-APP_COMMIT=`git log -1 --format=%h`
-APP_VERSION=`hack/version.sh`
-APP_COMMIT_DATE:=`TZ=UTC git log -1 --format=%cd --date=format:"%Y-%m-%d"`
-APP_COMMIT_TIME:=`TZ=UTC git log -1 --format=%cd --date=format:"%H:%M:%S"`
+APP_COMMIT=$(shell git log -1 --format=%h)
+APP_VERSION=$(shell hack/version.sh)
+APP_COMMIT_DATE:=$(shell TZ=UTC git log -1 --format=%cd --date=format:"%Y-%m-%d")
+APP_COMMIT_TIME:=$(shell TZ=UTC git log -1 --format=%cd --date=format:"%H:%M:%S")
 
 GO_FLAGS= CGO_ENABLED=0
 GO_LDFLAGS= -ldflags="-X main.appName=$(APP_NAME) -X main.appVersion=$(APP_VERSION) -X main.appCommit=$(APP_COMMIT) -X main.appCommitDate=$(APP_COMMIT_DATE) -X main.appCommitTime=$(APP_COMMIT_TIME)"
