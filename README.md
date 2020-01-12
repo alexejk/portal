@@ -1,5 +1,12 @@
 # Portal
 
+
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/alexejk/portal/Build)
+[![Go Report Card](https://goreportcard.com/badge/alexejk.io/portal)](https://goreportcard.com/report/alexejk.io/portal)
+
+![GitHub](https://img.shields.io/github/license/alexejk/portal)
+![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/alexejk/portal)
+
 Simple tool to quickly connect to favorite servers, including creation of SSH tunnels.
 
 ## Status
