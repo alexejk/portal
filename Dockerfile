@@ -1,4 +1,3 @@
-
 FROM golang:1.13-alpine
 
 # Build dependencies

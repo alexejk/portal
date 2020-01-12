@@ -61,10 +61,15 @@ func readPortalsFromConfig() ([]Portal, error) {
 
 			var port Portal
 
-			if p.Aws != nil {
-				port, err = newAwsPortal(*p.Name, *p.Aws.InstanceId, *p.Aws.Region)
-			} else {
-				port, err = newSimplePortal(*p.Name, *p.Command)
+			switch {
+			case p.Aws != nil:
+				port, err = newAwsPortal(*p.Name, p.Aws)
+
+			case p.Raw != nil:
+				port, err = newRawPortal(*p.Name, p.Raw)
+
+			default:
+				return nil, fmt.Errorf("empty portal definition: %s", *p.Name)
 			}
 
 			if err != nil {

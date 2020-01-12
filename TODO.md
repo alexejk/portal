@@ -2,7 +2,7 @@
 
 _A non-prioritized list of things that are yet to come._
 
-* Support for AWS Destinations via AWSConnect
+* Declarative connections with support for tunnel portal randomization
 * Way more testing
 * Auto-completion support for destinations (both `bash` & `zsh`)
 * Potentially change to a more declarative configuration format (albeit more limiting)
