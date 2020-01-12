@@ -1,4 +1,8 @@
-## (unreleased)
+## WIP
+
+_TBD_
+
+## 0.0.2
 
 ### Enhancements
 
