@@ -27,9 +27,9 @@ lint:
 	@go vet ./...
 
 .PHONY: test
-test:
+test: pre-build
 	@echo "Running tests..."
-	@go test ./...
+	@go test -coverprofile=build/coverage.txt -covermode=atomic ./...
 
 #--------------------------------
 # Code generation steps
