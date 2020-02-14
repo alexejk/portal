@@ -3,7 +3,7 @@ module alexejk.io/portal
 go 1.13
 
 require (
-	github.com/aws/aws-sdk-go v1.28.13
+	github.com/aws/aws-sdk-go v1.29.2
 	github.com/konsorten/go-windows-terminal-sequences v1.0.2 // indirect
 	github.com/mitchellh/go-homedir v1.1.0
 	github.com/pelletier/go-toml v1.6.0 // indirect
